@@ -28,3 +28,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+ItsReigningCatsAndDogs_v1/Library/expandedItems
+
+ItsReigningCatsAndDogs_v1/Library/CurrentLayout.dwlt
