@@ -241,7 +241,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369971653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.65, z: 0}
+  m_LocalPosition: {x: 0, y: -4.9, z: 0}
   m_LocalScale: {x: 500, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -255,7 +255,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 369971653}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0d230dfd59a0b4bc2bfc88c4bed8c687, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -322,6 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420609023}
   - component: {fileID: 420609024}
+  - component: {fileID: 420609025}
   m_Layer: 0
   m_Name: GroundCheck_1
   m_TagString: Untagged
@@ -336,8 +337,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 420609022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.12, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 424358903}
   m_RootOrder: 0
@@ -353,7 +354,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81387ca1fff56640b5d99bae3f9abf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grounded: 0
+  grounded: 1
+--- !u!61 &420609025
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 420609022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &424358901
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +434,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fdf19b35f003b456cb1159a3f6ec1e64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
@@ -421,7 +447,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 424358901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -2, z: 0}
+  m_LocalPosition: {x: -6, y: 1, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 420609023}
@@ -436,7 +462,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 424358901}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6c55d5bce0bc24c88b9e79467c015c5c, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -467,11 +493,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.1
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 6c55d5bce0bc24c88b9e79467c015c5c, type: 2}
+  m_GravityScale: 2
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &424358906
 MonoBehaviour:
@@ -487,6 +513,7 @@ MonoBehaviour:
   maxSpeed: 4
   speed: 40
   jump: 6
+  slideForce: 2000
   grounded: 1
 --- !u!95 &424358907
 Animator:
@@ -862,6 +889,7 @@ MonoBehaviour:
   maxSpeed: 4
   speed: 40
   jump: 6
+  slideForce: 2000
   grounded: 1
 --- !u!1 &1905091709
 GameObject:

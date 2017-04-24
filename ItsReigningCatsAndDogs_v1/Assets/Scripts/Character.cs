@@ -11,6 +11,9 @@ public class Character : MonoBehaviour
     public float speed = 50f;
     public float jump = 150f;
 
+	//Sliding mechanics
+	public float slideForce = 2000f;
+
     public bool grounded;
 
     private Rigidbody2D rb2d;
@@ -21,24 +24,16 @@ public class Character : MonoBehaviour
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
-      
     }
 
 
     void Update()
     {
-
-
-
-        
-
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             if (grounded == true)
             {
-                
                 rb2d.AddForce (Vector3.up * jump, ForceMode2D.Impulse);
-
             }
         }
 
@@ -46,13 +41,17 @@ public class Character : MonoBehaviour
 		{
 			if (grounded == true)
 			{
-
 				rb2d.AddForce (Vector3.up * jump, ForceMode2D.Impulse);
-
 			}
 		}
 
+		//Sliding mechanics
+		if (Input.GetKeyDown(KeyCode.LeftShift) && grounded == true)
+		{
+			Slide();
+		}
 
+			
         if (Input.GetAxis("Horizontal") < -0.1f)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
@@ -72,12 +71,6 @@ public class Character : MonoBehaviour
     }
 
 
-
-
-
-
-
-
     void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
@@ -93,22 +86,12 @@ public class Character : MonoBehaviour
         {
             rb2d.velocity = new Vector3(-maxSpeed, rb2d.velocity.y);
         }
-
-
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-
-        if (col.CompareTag("Coin"))
-        {
-            Destroy(col.gameObject);
-            
-        }
-
-    }
-
-
-
+	//Sliding mechanics
+	public void Slide()
+	{
+		rb2d.AddForce(Vector2.right * slideForce, ForceMode2D.Force);
+	}
 }
 
