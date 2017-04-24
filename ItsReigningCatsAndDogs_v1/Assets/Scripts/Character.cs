@@ -42,6 +42,16 @@ public class Character : MonoBehaviour
             }
         }
 
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (grounded == true)
+			{
+
+				rb2d.AddForce (Vector3.up * jump, ForceMode2D.Impulse);
+
+			}
+		}
+
 
         if (Input.GetAxis("Horizontal") < -0.1f)
         {
